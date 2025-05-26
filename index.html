@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Surprise!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      text-align: center;
+      padding: 40px;
+    }
+    .container {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 500px;
+      margin: auto;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 18px;
+      overflow-x: auto;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 20px;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #bdc3c7;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .thankyou {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+    <form action="https://formspree.io/f/xzzrlyoq" method="POST"></form>
+  <div class="container">
+    <h1>🎉 Congratulations!! 🎉</h1>
+    <p>Click the button below to decode the secret message:</p>
+    <button onclick="showMessage()">Decode Message</button>
+    
+    <div id="message" style="margin-top: 20px; display:none;">
+      <h2>Secret Message in Morse Code</h2>
+      <pre>
+        <code>.-- / ..- / --. / --- / --- / .- / -.. / .-- / --</code> 
+        ('/' here is the space between alphabets)
+      </pre>
+      
+      <h3>Morse Code Alphabet Reference:</h3>
+      <pre>
+A: .-       N: -.
+B: -...     O: ---
+C: -.-.     P: .--.
+D: -..      Q: --.-
+E: .        R: .-.
+F: ..-.     S: ...
+G: --.      T: -
+H: ....     U: ..-
+I: ..       V: ...-
+J: .---     W: .--
+K: -.-      X: -..-
+L: .-..     Y: -.--
+M: --       Z: --..
+      </pre>
+      <P>The alphabets above are just the first alphabets of what i am asking you for</P>
+      <p><strong>PS </strong> .. .-.. -.-- 💗</p>
+      
+      <h3>Add Your Answer:</h3>
+      <textarea id="answer" placeholder="Write your answer here..."></textarea><br />
+      <button onclick="submitAnswer()">Submit</button>
+      <p id="thankyou" class="thankyou" style="display:none;">Thank you for your reply! 💗</p>
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById('message').style.display = 'block';
+    }
+
+    function submitAnswer() {
+      const answer = document.getElementById('answer').value.trim();
+      if(answer === '') {
+        alert('Please write something before submitting.');
+        return;
+      }
+      // You can add code here to send the answer to a server if you want
+      document.getElementById('thankyou').style.display = 'block';
+      document.getElementById('answer').value = '';
+    }
+  </script>
+</body>
+</html>
