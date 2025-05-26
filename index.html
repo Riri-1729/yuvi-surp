@@ -59,19 +59,18 @@
   </style>
 </head>
 <body>
-    <form action="https://formspree.io/f/xzzrlyoq" method="POST"></form>
   <div class="container">
     <h1>🎉 Congratulations!! 🎉</h1>
     <p>Click the button below to decode the secret message:</p>
     <button onclick="showMessage()">Decode Message</button>
-    
+
     <div id="message" style="margin-top: 20px; display:none;">
       <h2>Secret Message in Morse Code</h2>
       <pre>
         <code>.-- / ..- / --. / --- / --- / .- / -.. / .-- / --</code> 
         ('/' here is the space between alphabets)
       </pre>
-      
+
       <h3>Morse Code Alphabet Reference:</h3>
       <pre>
 A: .-       N: -.
@@ -85,15 +84,18 @@ H: ....     U: ..-
 I: ..       V: ...-
 J: .---     W: .--
 K: -.-      X: -..-
-L: .-..     Y: -.--
+L: .-..     Y: -.-- 
 M: --       Z: --..
       </pre>
-      <P>The alphabets above are just the first alphabets of what i am asking you for</P>
-      <p><strong>PS </strong> .. .-.. -.-- 💗</p>
-      
+      <p>The alphabets above are just the first alphabets of what I am asking you for</p>
+      <p><strong>PS</strong> .. .-.. -.-- 💗</p>
+
+      <!-- ✅ FIXED: Proper form placement and submission -->
       <h3>Add Your Answer:</h3>
-      <textarea id="answer" placeholder="Write your answer here..."></textarea><br />
-      <button onclick="submitAnswer()">Submit</button>
+      <form action="https://formspree.io/f/xzzrlyoq" method="POST" onsubmit="return validateForm()">
+        <textarea id="answer" name="message" placeholder="Write your answer here..."></textarea><br />
+        <button type="submit">Submit</button>
+      </form>
       <p id="thankyou" class="thankyou" style="display:none;">Thank you for your reply! 💗</p>
     </div>
   </div>
@@ -103,15 +105,14 @@ M: --       Z: --..
       document.getElementById('message').style.display = 'block';
     }
 
-    function submitAnswer() {
+    function validateForm() {
       const answer = document.getElementById('answer').value.trim();
-      if(answer === '') {
+      if (answer === '') {
         alert('Please write something before submitting.');
-        return;
+        return false;
       }
-      // You can add code here to send the answer to a server if you want
       document.getElementById('thankyou').style.display = 'block';
-      document.getElementById('answer').value = '';
+      return true; // Allow form to submit
     }
   </script>
 </body>
